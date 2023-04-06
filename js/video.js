@@ -7,11 +7,13 @@ window.addEventListener("load", function() {
 	video = document.getElementById('player1');
 
 	const playButton = document.querySelector('#play');
+	const volumeSpan = document.querySelector('#volume');
 	playButton.addEventListener('click', function() {
 		// code to execute when play button is clicked
 		if (video.paused) {
 			video.play();
 		}
+		volumeSpan.textContent = `${Math.round(video.volume * 100)}%`;
 	});
 	
 	const pauseButton = document.querySelector('#pause');
@@ -59,7 +61,6 @@ window.addEventListener("load", function() {
 	});
 
 	const slider = document.querySelector('#slider');
-	const volumeSpan = document.querySelector('#volume');
 	slider.addEventListener('input', function() {
 		video.volume = slider.value / 100;
 		volumeSpan.textContent = `${slider.value}%`;
